@@ -34,7 +34,7 @@ def rollback():
             fcntl.lockf(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except IOError:
             # TODO: How to have pretty error pages?
-            return "Another rollback is already running"
+            return "Another rollback is already running."
 
         subprocess.check_call(["sudo", "systemctl", "stop", "factorio"])
         try:

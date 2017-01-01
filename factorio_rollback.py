@@ -8,16 +8,8 @@ import os
 import time
 import subprocess
 
-# TODO: configure directory
-SAVES_DIRECTORY = "/home/factorio/server/factorio/saves"
-#SAVES_DIRECTORY = "/home/steve/Documents/Coding/factorio_rollback/saves"
-SECRET_KEY = "gruh"
-
-# TODO: Where to put the configuration file? Need to set SECRET_KEY.
-# TODO: Set environment variable (FACTORIO_ROLLBACK_CONFIG_PATH?) in .wsgi
 app = Flask(__name__)
-# TODO: temporary config from self. remove when config file is implemented.
-app.config.from_object(__name__)
+app.config.from_envvar("FACTORIO_ROLLBACK_CONFIG_PATH")
 
 
 @app.route('/')
@@ -92,7 +84,7 @@ def list_saves():
 @app.before_request
 def enter_saves_directory():
     # All operations are performed in this directory.
-    os.chdir(SAVES_DIRECTORY)
+    os.chdir(app.config["SAVES_DIRECTORY"])
 
 if __name__ == '__main__':
     app.run(debug=True)

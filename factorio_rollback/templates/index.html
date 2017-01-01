@@ -9,6 +9,10 @@
     <form method="post" action="rollback">
         {{ form.saves }}
         {{ form.csrf_token }}
+
+        <p>This may take on the order of half a minute. Stopping the server is
+        very slow.</p>
+
         <input type="submit" value="Roll back">
     </form>
 </body>

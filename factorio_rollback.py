@@ -87,4 +87,4 @@ def enter_saves_directory():
     os.chdir(app.config["SAVES_DIRECTORY"])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

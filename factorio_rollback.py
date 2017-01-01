@@ -50,7 +50,7 @@ def rollback():
 
 
 class SaveSelectionForm(FlaskForm):
-    saves = RadioField(validators=[InputRequired(),])
+    saves = RadioField(validators=[InputRequired(), ])
 
 
 def set_field_choices(form, saves=None):
@@ -61,7 +61,8 @@ def set_field_choices(form, saves=None):
     form.saves.choices = [
         (
             str(timestamp),
-            time.strftime('%A, %d %B %Y, %I:%M %p %Z', time.localtime(timestamp)),
+            time.strftime('%A, %d %B %Y, %I:%M %p %Z',
+                          time.localtime(timestamp)),
         ) for timestamp in sorted(saves.keys())
     ]
 
